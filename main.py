@@ -2,10 +2,10 @@ import refinitiv.dataplatform as rdp
 import os
 
 rdp.open_platform_session(
-    "2b671088688c46f48d63b3813f000068175490d7",
+    "xxxx",
     rdp.GrantPassword(
-        "xuanheng.huang@studbocconi.it",
-        "Dadada96!"
+        "email@asdf.it",
+        "xxxxx"
     )
 )
 
