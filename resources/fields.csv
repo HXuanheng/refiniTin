@@ -1,0 +1,10 @@
+fields
+TR.CO2EmissionTotal.date
+TR.CO2EmissionTotal
+TR.CO2DirectScope1
+TR.CO2IndirectScope2
+TR.CO2IndirectScope3
+TR.AnalyticGHGEmissionsDirectScope1
+TR.AnalyticGHGEmissionsIndirectScope2
+TR.AnalyticGHGEmissionsScope1and2and3
+TR.AnalyticGHGEmissionsScope1and2and3ParisAligned
