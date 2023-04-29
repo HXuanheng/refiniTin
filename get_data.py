@@ -35,12 +35,14 @@ def get_data():
     i=0
     for instrument in instruments:
         for parameter in parameters:
+            # filename = parameter[-8:-2]
+            filename = re.findall(r'"([^"]*)"',parameter)
+            filename = filename[-1]
             try:
                 df,err=ek.get_data(instrument, fields, parameters=parameter, field_name=False, raw_output=False, debug=False)
             except:
                 # Raise a warning instead of an exception
-                warnings.warn('Firm ' + instrument + ' Parameter ' + parameter + ' raise warning!!!', RuntimeWarning)
-            filename = parameter[-8:-2]
+                warnings.warn('Firm ' + instrument + ' Parameter ' + filename + ' raise warning!!!', RuntimeWarning)
             clean_ins = clean_filename(instrument)
             df.to_csv(results+'/to_append/'+clean_ins+'_'+filename+'.csv', **to_csv)
             print('Firm ' + instrument + ' Parameter ' + parameter + ' completed...')
