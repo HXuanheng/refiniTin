@@ -1,4 +1,4 @@
-appkey="d5f61ee4093342baa263cc13585f098faa455c41"
+appkey="xxxx"
 
 resources="resources/"
 results="results/"
