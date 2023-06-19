@@ -33,19 +33,23 @@ def get_data():
     parameters=pd.read_csv(resources+item+".csv", **read_csv)[item].tolist()
     frames=[None]*len(instruments)*len(parameters)
     i=0
-    for instrument in instruments:
-        for parameter in parameters:
+    for parameter in parameters:
             # filename = parameter[-8:-2]
             filename = re.findall(r'"([^"]*)"',parameter)
             filename = filename[-1]
             try:
-                df,err=ek.get_data(instrument, fields, parameters=parameter, field_name=False, raw_output=False, debug=False)
+                df,err=ek.get_data(instruments, 
+                                   fields, 
+                                   parameters=parameter, 
+                                   field_name=False, 
+                                   raw_output=False, 
+                                   debug=False)
+                df['parameter'] = filename
+                df.to_csv(results+'/to_append/'+filename+'.csv', **to_csv)
+                print('Parameter '+parameter+' completed...')
             except:
                 # Raise a warning instead of an exception
-                warnings.warn('Firm ' + instrument + ' Parameter ' + filename + ' raise warning!!!', RuntimeWarning)
-            clean_ins = clean_filename(instrument)
-            df.to_csv(results+'/to_append/'+clean_ins+'_'+filename+'.csv', **to_csv)
-            print('Firm ' + instrument + ' Parameter ' + parameter + ' completed...')
+                warnings.warn('Parameter '+filename+' raise warning!!!', RuntimeWarning)
 
 def append_data():
     all_files = os.listdir(results+'/to_append/')
